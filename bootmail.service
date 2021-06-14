@@ -1,0 +1,12 @@
+[Unit]
+Description=Send email at system Start and Stop
+After=sendmail.service named.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/local/sbin/bootmail.sh startup
+ExecStop=/usr/local/sbin/bootmail.sh shutdown
+
+[Install]
+WantedBy=multi-user.target
